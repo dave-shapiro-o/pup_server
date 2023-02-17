@@ -21,7 +21,6 @@ app.get("/parse", (req, res) => {
     return url ? url : `No useful results found in search: ${title}`;
   }
   getVideoUrl().then((videoUrl) => {
-    console.log(videoUrl);
     res.send(`{"videoUrl": "${videoUrl}"}`);
   });
 });
