@@ -17,7 +17,7 @@ app.get("/parse", (req, res) => {
     const title = await page.title();
     const [url] = await page.evaluate(() => 
       Array.from(document.querySelectorAll('a[href*="https://www.youtube.com/watch?v="]'), element => element.href));
-    
+
     return url ? url : `No useful results found in search: ${title}`;
   }
   getVideoUrl().then((videoUrl) => {
@@ -25,6 +25,6 @@ app.get("/parse", (req, res) => {
   });
 });
 
-app.listen(port, () => {
+module.exports = app.listen(port, () => {
   console.log(`pup server listening at http://localhost:${port}`); 
 });
